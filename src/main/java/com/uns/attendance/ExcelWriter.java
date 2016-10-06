@@ -19,8 +19,6 @@ public class ExcelWriter {
 	
 	private Properties prop;
 	
-	private static final String FILE_WRITE_PATH = "file.write.path";
-	
 	public void setProp(Properties prop) {
 		this.prop = prop;
 	}
@@ -99,7 +97,7 @@ public class ExcelWriter {
         }
         
         //Write the workbook in file system
-        FileOutputStream out = new FileOutputStream(new File(prop.getProperty(FILE_WRITE_PATH)));
+        FileOutputStream out = new FileOutputStream(new File(prop.getProperty(Constants.FILE_WRITE_PATH)));
         workbook.write(out);
         out.close();
         System.out.println("New File formed successfully and data entered.");

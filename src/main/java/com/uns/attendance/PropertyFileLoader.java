@@ -16,7 +16,7 @@ public class PropertyFileLoader {
 		Properties prop = new Properties();
 		
 		//load all properties file here
-		loadProperties("file.properties", properties);
+		loadProperties(Constants.FILE_PROPERTIES, properties);
 		prop.putAll(properties);
 		
 		return prop;

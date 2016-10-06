@@ -19,10 +19,6 @@ public class ExcelReader {
 	
 	private Properties prop;
 	
-	private static final String FILE_READ_PATH = "file.read.path";
-	
-	private static final String PRESENT = "P";
-	
 	public void setProp(Properties prop) {
 		this.prop = prop;
 	}
@@ -46,7 +42,7 @@ public class ExcelReader {
 	 */
 	public Map<String, List<StudentInfo>> readResponseExcelAndCreateData() throws IOException {
 		
-		FileInputStream file = new FileInputStream(new File(prop.getProperty(FILE_READ_PATH)));
+		FileInputStream file = new FileInputStream(new File(prop.getProperty(Constants.FILE_READ_PATH)));
 		 
         //Create Workbook instance holding reference to .xlsx file
         XSSFWorkbook workbook = new XSSFWorkbook(file);
@@ -156,7 +152,7 @@ public class ExcelReader {
 		for(String studentWithAttendance : studentWithAttendanceList) {
 			studentWithAttendance = studentWithAttendance.trim();
 			String[] splitByHyphen = studentWithAttendance.split("-");
-			map.put(splitByHyphen[0].trim(), splitByHyphen[1].trim().equals(PRESENT));
+			map.put(splitByHyphen[0].trim(), splitByHyphen[1].trim().equalsIgnoreCase(Constants.PRESENT));
 		}
 		return map;
 	}
